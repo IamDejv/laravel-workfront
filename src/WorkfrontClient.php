@@ -470,6 +470,8 @@ class WorkfrontClient
         $query = array();
         if (!is_null($this->sessionID) && !$this->batch) {
             $query['sessionID'] = $this->sessionID;
+        } elseif ($apiKey = $this->config['api.key']) {
+            $query['apiKey'] = $apiKey;
         }
         $query['method'] = $method;
         $query           = http_build_query($query);
